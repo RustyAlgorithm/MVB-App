@@ -1,0 +1,15 @@
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/bin/Debug/net6.0/CurrencyCalculator
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/bin/Debug/net6.0/CurrencyCalculator.deps.json
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/bin/Debug/net6.0/CurrencyCalculator.runtimeconfig.json
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/bin/Debug/net6.0/CurrencyCalculator.dll
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/bin/Debug/net6.0/CurrencyCalculator.pdb
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.csproj.AssemblyReference.cache
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.AssemblyInfoInputs.cache
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.AssemblyInfo.cs
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.csproj.CoreCompileInputs.cache
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.dll
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/refint/CurrencyCalculator.dll
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.pdb
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/CurrencyCalculator.genruntimeconfig.cache
+/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/Debug/net6.0/ref/CurrencyCalculator.dll
