@@ -58,7 +58,7 @@ internal class Program
         string customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        //test
+        
 
         // main section.
         while(finished == false)
