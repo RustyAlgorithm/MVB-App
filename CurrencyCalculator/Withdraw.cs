@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
-
 namespace CurrencyCalculator
 {
-    public class Deposits
-    {
-
-
+	public class Withdraw
+	{
         TypeOut t = new TypeOut();
         SmallTalk s = new SmallTalk();
         Coin c = new Coin();
@@ -17,15 +13,9 @@ namespace CurrencyCalculator
         int thank;
         float currentGold = 0;
 
-        t.TypeFast("2) Platinum Deposit");
-            t.TypeFast("3) Gold Deposit");
-            t.TypeFast("4) Electrum Deposit");
-            t.TypeFast("5) Silver Deposit");
-            t.TypeFast("6) Copper Deposit");
-
-        public float CopperDeposit()
+        public float CopperWithdraw()
         {
-            t.TypeFast("Please Enter the number of Copper Pieces (CP) you have...");
+            t.TypeFast("Please Enter the number of Copper Pieces (CP) you want to withdraw...");
 
             int cP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(cP * 0.01);
@@ -37,9 +27,9 @@ namespace CurrencyCalculator
             Thread.Sleep(2000);
             return CD;
         }
-        public float SilverDeposit()
+        public float SilverWithdraw()
         {
-            t.TypeFast("Please Enter the number of Silver Pieces (SP) you have...");
+            t.TypeFast("Please Enter the number of Silver Pieces (SP) you want to withdraw...");
 
             int sP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(sP * 0.1);
@@ -51,9 +41,9 @@ namespace CurrencyCalculator
             Thread.Sleep(2000);
             return SD;
         }
-        public float ElectrumDeposit()
+        public float ElectrumWithdraw()
         {
-            t.TypeFast("Please Enter the number of Electrum Pieces (EP) you have...");
+            t.TypeFast("Please Enter the number of Electrum Pieces (EP) you want to withdraw...");
 
             int eP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(eP * 0.5);
@@ -65,9 +55,9 @@ namespace CurrencyCalculator
             Thread.Sleep(2000);
             return ED;
         }
-        public float GoldDeposit()
+        public float GoldWithdraw()
         {
-            t.TypeFast("Please Enter the number of Gold Pieces (GP) you have...");
+            t.TypeFast("Please Enter the number of Gold Pieces (GP) you want to withdraw...");
 
             int gP = Convert.ToInt32(Console.ReadLine());
             thank = gP;
@@ -78,38 +68,31 @@ namespace CurrencyCalculator
             Thread.Sleep(2000);
             return GD;
         }
-        public float PlatinumDeposit()
+        public float PlatinumWithdraw()
         {
-            t.TypeFast("Please Enter the number of Platinum Pieces (PP) you have...");
+            t.TypeFast("Please Enter the number of Platinum Pieces (PP) you want to withdraw...");
 
             int pP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(pP * 5);
             thank = Convert.ToInt32(hold);
             float PD = hold;
-            
+
             Thread.Sleep(1500);
             t.TypeLine(s.Thank(thank));
             Thread.Sleep(1500);
             return PD;
         }
-
-        public string DepositTotal(float cP, float sP, float eP, float gP, float pP, string name)
+        public string WithdrawAmount(float cP, float sP, float eP, float gP, float pP, string name)
         {
-            float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) + csv.GetBalance(name);
+            float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) - csv.GetBalance(name);
             t.TypeLine("Please wait while we count your coins.");
             t.WaitLine(newtotal);
             Thread.Sleep(100);
 
-            
-
-
             return $"Your total is: {Convert.ToString(newtotal)} gold.";
-        }
-        public float CurrentDeposit()
-        {
-            return c.Total;
         }
         
     }
 }
+
 

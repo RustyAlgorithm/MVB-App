@@ -8,13 +8,19 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        string customerName = "Smith";
+
         Random rng = new Random();
         TypeOut t = new TypeOut();
         SmallTalk s = new SmallTalk();
         Deposits d = new Deposits();
+        SaveToCSV CSV = new SaveToCSV();
+        Actions a = new Actions();
 
+        
         bool finished = false;
-        string PersonOrOrganisation = "";
+        
+        float CurrentBalance = 0;
 
         // Clear console of defualt text and then verify ready to start then clear again
         Console.Clear();
@@ -32,50 +38,35 @@ internal class Program
         t.TypeLine("Thank you.");
         Thread.Sleep(1500);
 
-        // future fuctionality party funds or accounts for specific people
-        /*while (PersonOrOrganisation == null)
-        {
-            t.TypeWait("Now, ");
-            t.TypeFast("are you an idividual or an organisation/party/guild/business or abyssal entity?");
-            PersonOrOrganisation = Console.ReadLine();
-        }
-
-        PersonOrOrganisation.ToLower(); */
-
-
-
-        //switch (PersonOrOrganisation)
-        //{
-        //case("")
-        //{
-        //;
-        //}
-        //break;
-        //}
-
         // future functionality name for accounts
         t.TypeFast("may I please have a name for the account.");
-        string customerName = Console.ReadLine();
+        customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        
+        CurrentBalance = CSV.GetBalance(customerName);
 
         // main section.
-        while(finished == false)
+        while (finished == false)
         {
 
             int option = 0;
-
-            t.TypeFast("1) Full Deposit");
-            t.TypeFast("2) Platinum Deposit");
-            t.TypeFast("3) Gold Deposit");
-            t.TypeFast("4) Electrum Deposit");
-            t.TypeFast("5) Silver Deposit");
-            t.TypeFast("6) Copper Deposit");
-            t.TypeFast("7) Exit");
+            string Option;
+            t.TypeFast("1) Deposit");
+            t.TypeFast("2) Withdraw");
+            t.TypeFast("3) Balance");
+            t.TypeFast("4) Exit");
             t.TypeFast("Please enter the number of the option you require.");
 
-            option = Convert.ToInt16(Console.ReadLine());
+            Option = Console.ReadLine();
+
+            if (Option != null)
+            {
+                option = Convert.ToInt16(Option);
+            }
+            else
+            {
+                option = 0;
+            }
 
             string continueActions = "no";
 
@@ -83,10 +74,9 @@ internal class Program
             {
                 case (1):
                     {
-                        t.TypeFast(d.DepositTotal(d.CopperDeposit(), d.SilverDeposit(), d.ElectrumDeposit(), d.GoldDeposit(), d.PlatinumDeposit()));
+                        a.Deposit(customerName);
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
-
 
                         continueActions = Console.ReadLine();
                         if (continueActions == null)
@@ -99,7 +89,6 @@ internal class Program
                     break;
                 case (2):
                     {
-                        t.TypeFast(d.DepositTotal(0, 0, 0, 0, d.PlatinumDeposit()));
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -114,7 +103,7 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeFast(d.DepositTotal(0, 0, 0, d.GoldDeposit(), 0));
+                        t.TypeLine($"You currently have: {Convert.ToString(CurrentBalance)} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -128,51 +117,6 @@ internal class Program
                     }
                     break;
                 case (4):
-                    {
-                        t.TypeFast(d.DepositTotal(0, 0, d.ElectrumDeposit(), 0, 0));
-                        t.TypeLine("Have you 'found' anymore you want to include?");
-                        t.TypeFast("please enter yes or no.");
-
-                        continueActions = Console.ReadLine();
-                        if (continueActions == null)
-                        {
-                            continueActions = "no";
-                        }
-
-                        continueActions.ToLower();
-                    }
-                    break;
-                case (5):
-                    {
-                        t.TypeFast(d.DepositTotal(0, d.SilverDeposit(), 0, 0, 0));
-                        t.TypeLine("Have you 'found' anymore you want to include?");
-                        t.TypeFast("please enter yes or no.");
-
-                        continueActions = Console.ReadLine();
-                        if (continueActions == null)
-                        {
-                            continueActions = "no";
-                        }
-
-                        continueActions.ToLower();
-                    }
-                    break;
-                case (6):
-                    {
-                        t.TypeFast(d.DepositTotal(d.CopperDeposit(), 0, 0, 0, 0));
-                        t.TypeLine("Have you 'found' anymore you want to include?");
-                        t.TypeFast("please enter yes or no.");
-
-                        continueActions = Console.ReadLine();
-                        if (continueActions == null)
-                        {
-                            continueActions = "no";
-                        }
-
-                        continueActions.ToLower();
-                    }
-                    break;
-                case (7):
                     {
                         continueActions = "no";
                     }
@@ -191,6 +135,8 @@ internal class Program
             if (continueActions == "no")
             {
                 finished = true;
+                CurrentBalance = CurrentBalance + d.CurrentDeposit();
+                CSV.SaveToCsv(customerName, CurrentBalance);
                 t.TypeLine("Very well, Thank you for using Multiversal Bank.");
                 t.TypeLine($"Have a nice day {customerName}.");
             }

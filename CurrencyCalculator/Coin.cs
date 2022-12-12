@@ -4,7 +4,7 @@ namespace CurrencyCalculator
 {
 	class Coin
 	{
-        float Total;
+        public float Total;
         float runningTotal;
         public string CountCoins(float cP, float sP, float eP, float gP, float pP)
         {

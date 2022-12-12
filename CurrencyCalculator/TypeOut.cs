@@ -3,9 +3,9 @@ using CurrencyCalculator;
 
 namespace CurrencyCalculator
 {
-    
-	public class TypeOut
-	{
+
+    public class TypeOut
+    {
         ConsoleSpiner s = new ConsoleSpiner();
         public void TypeLine(string line)
         {
@@ -43,22 +43,40 @@ namespace CurrencyCalculator
             Thread.Sleep(100);
             Console.WriteLine();
         }
-        public void WaitLine()
+        public void WaitLine(float amount)
         {
+            int time = 0;
+            int Amount = Convert.ToInt32(amount);
+            if (Amount < 500)
+            {
+                time = 10;
+            }
+            else if (Amount < 10000)
+            {
+                time = 100;
+            }
+            else if (Amount < 100000)
+            {
+                time = 250;
+            }
+            else
+            {
+                time = 1000;
+            }
 
             Console.CursorVisible = false;
             int i = 0;
             while (i < 5)
             {
                 s.Turn();
-                Thread.Sleep(250);
+                Thread.Sleep(time);
                 s.Turn();
-                Thread.Sleep(250);
+                Thread.Sleep(time);
                 s.Turn();
-                Thread.Sleep(250);
+                Thread.Sleep(time);
                 s.Turn();
-                Thread.Sleep(250);
-                
+                Thread.Sleep(time);
+
                 i++;
             }
             Console.CursorVisible = true;
@@ -92,7 +110,9 @@ namespace CurrencyCalculator
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
-
+        
     }
 }
+
+
 
