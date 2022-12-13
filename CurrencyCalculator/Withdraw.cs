@@ -91,7 +91,10 @@ namespace CurrencyCalculator
 
             return $"Your total is: {Convert.ToString(newtotal)} gold.";
         }
-        
+        public float WithdrawTotal()
+        {
+            return c.Total;
+        }
     }
 }
 

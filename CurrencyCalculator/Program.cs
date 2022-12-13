@@ -6,6 +6,7 @@ using System.Data;
 
 internal class Program
 {
+
     private static void Main(string[] args)
     {
         string customerName = "Smith";
@@ -16,11 +17,12 @@ internal class Program
         Deposits d = new Deposits();
         SaveToCSV CSV = new SaveToCSV();
         Actions a = new Actions();
+        Withdraw w = new Withdraw();
 
-        
+
         bool finished = false;
         
-        float CurrentBalance = 0;
+        
 
         // Clear console of defualt text and then verify ready to start then clear again
         Console.Clear();
@@ -43,7 +45,7 @@ internal class Program
         customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        CurrentBalance = CSV.GetBalance(customerName);
+        a.CurrentBalance = CSV.GetBalance(customerName);
 
         // main section.
         while (finished == false)
@@ -103,7 +105,7 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(CurrentBalance)} gold.");
+                        t.TypeLine($"You currently have: {Convert.ToString(a.CurrentBalance)} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -135,8 +137,8 @@ internal class Program
             if (continueActions == "no")
             {
                 finished = true;
-                CurrentBalance = CurrentBalance + d.CurrentDeposit();
-                CSV.SaveToCsv(customerName, CurrentBalance);
+                
+                CSV.SaveToCsv(customerName, a.CurrentBalance);
                 t.TypeLine("Very well, Thank you for using Multiversal Bank.");
                 t.TypeLine($"Have a nice day {customerName}.");
             }

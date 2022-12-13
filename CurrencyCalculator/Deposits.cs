@@ -93,7 +93,7 @@ namespace CurrencyCalculator
             return PD;
         }
 
-        public string DepositTotal(float cP, float sP, float eP, float gP, float pP, string name)
+        public string DepositAmount(float cP, float sP, float eP, float gP, float pP, string name)
         {
             float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) + csv.GetBalance(name);
             t.TypeLine("Please wait while we count your coins.");
