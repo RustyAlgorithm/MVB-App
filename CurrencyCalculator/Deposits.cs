@@ -11,17 +11,12 @@ namespace CurrencyCalculator
         SmallTalk s = new SmallTalk();
         Coin c = new Coin();
         SaveToCSV csv = new SaveToCSV();
+        Actions a = new Actions();
 
         int total;
         float hold;
         int thank;
-        float currentGold = 0;
-
-        t.TypeFast("2) Platinum Deposit");
-            t.TypeFast("3) Gold Deposit");
-            t.TypeFast("4) Electrum Deposit");
-            t.TypeFast("5) Silver Deposit");
-            t.TypeFast("6) Copper Deposit");
+        float currentGold = 0; 
 
         public float CopperDeposit()
         {
@@ -95,13 +90,10 @@ namespace CurrencyCalculator
 
         public string DepositAmount(float cP, float sP, float eP, float gP, float pP, string name)
         {
-            float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) + csv.GetBalance(name);
+            float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) + a.CurrentBalance;
             t.TypeLine("Please wait while we count your coins.");
             t.WaitLine(newtotal);
-            Thread.Sleep(100);
-
-            
-
+            Thread.Sleep(100);  
 
             return $"Your total is: {Convert.ToString(newtotal)} gold.";
         }

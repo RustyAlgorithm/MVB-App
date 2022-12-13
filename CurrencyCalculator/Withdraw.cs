@@ -7,6 +7,7 @@ namespace CurrencyCalculator
         SmallTalk s = new SmallTalk();
         Coin c = new Coin();
         SaveToCSV csv = new SaveToCSV();
+        Actions a = new Actions();
 
         int total;
         float hold;
@@ -84,7 +85,7 @@ namespace CurrencyCalculator
         }
         public string WithdrawAmount(float cP, float sP, float eP, float gP, float pP, string name)
         {
-            float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) - csv.GetBalance(name);
+            float newtotal = a.CurrentBalance - Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP));
             t.TypeLine("Please wait while we count your coins.");
             t.WaitLine(newtotal);
             Thread.Sleep(100);

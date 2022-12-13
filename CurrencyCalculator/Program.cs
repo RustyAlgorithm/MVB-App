@@ -18,6 +18,7 @@ internal class Program
         SaveToCSV CSV = new SaveToCSV();
         Actions a = new Actions();
         Withdraw w = new Withdraw();
+        Coin c = new Coin();
 
 
         bool finished = false;
@@ -41,7 +42,7 @@ internal class Program
         Thread.Sleep(1500);
 
         // future functionality name for accounts
-        t.TypeFast("may I please have a name for the account.");
+        t.TypeFast("May we please have a name for the account.");
         customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
@@ -61,13 +62,13 @@ internal class Program
 
             Option = Console.ReadLine();
 
-            if (Option != null)
+            if (Option == "")
             {
-                option = Convert.ToInt16(Option);
+                option = 0;
             }
             else
             {
-                option = 0;
+                option = Convert.ToInt16(Option);
             }
 
             string continueActions = "no";
@@ -81,7 +82,7 @@ internal class Program
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }
@@ -91,11 +92,12 @@ internal class Program
                     break;
                 case (2):
                     {
+                        a.Withdraw(customerName);
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }
@@ -110,7 +112,7 @@ internal class Program
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }

@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.VisualBasic.FileIO;
+
 namespace CurrencyCalculator
 {
 	public class Actions
@@ -16,55 +18,70 @@ namespace CurrencyCalculator
         {
             int option;
             
-            
-
             CSV.GetBalance(customerName);
 
             t.TypeFast("dhat kind of Deposit dould you like?");
-            t.TypeFast("1) Full Deposit (all in gold coins.)");
+            t.TypeFast("1) Full Deposit");
             t.TypeFast("2) Platinum Deposit");
             t.TypeFast("3) Gold Deposit");
             t.TypeFast("4) Electrum Deposit");
             t.TypeFast("5) Silver Deposit");
             t.TypeFast("6) Copper Deposit");
+            string Option = Console.ReadLine();
+
+            if (Option == "")
+            {
+                option = 0;
+            }
+            else
+            {
+                option = Convert.ToInt16(Option);
+            }
 
             switch (option)
             {
-            case (1):
-                {
-                    t.TypeFast(d.DepositAmount(d.CopperDeposit(), d.SilverDeposit(), d.ElectrumDeposit(), d.GoldDeposit(), d.PlatinumDeposit(), customerName));
-                }
-                break;
-            case (2):
-                {
-                    t.TypeFast(d.DepositAmount(0, 0, 0, 0, d.PlatinumDeposit(), customerName));
-                }
-                break;
-            case (3):
-                {
-                    t.TypeFast(d.DepositAmount(0, 0, 0, d.GoldDeposit(), 0, customerName));
-                }
-                break;
-            case (4):
-                {
-                    t.TypeFast(d.DepositAmount(0, 0, d.ElectrumDeposit(), 0, 0, customerName));
-                }
-                break;
-            case (5):
-                {
-                    t.TypeFast(d.DepositAmount(0, d.SilverDeposit(), 0, 0, 0, customerName));
-                }
-                break;
-            case (6):
-                {
-                    t.TypeFast(d.DepositAmount(d.CopperDeposit(), 0, 0, 0, 0, customerName));
-                }
-                break;
+                case (1):
+                    {
+                        t.TypeFast(d.DepositAmount(d.CopperDeposit(), d.SilverDeposit(), d.ElectrumDeposit(), d.GoldDeposit(), d.PlatinumDeposit(), customerName));
+                    }
+                    break;
+                case (2):
+                    {
+                        t.TypeFast(d.DepositAmount(0, 0, 0, 0, d.PlatinumDeposit(), customerName));
+                    }
+                    break;
+                case (3):
+                    {
+                        t.TypeFast(d.DepositAmount(0, 0, 0, d.GoldDeposit(), 0, customerName));
+                    }
+                    break;
+                case (4):
+                    {
+                        t.TypeFast(d.DepositAmount(0, 0, d.ElectrumDeposit(), 0, 0, customerName));
+                    }
+                    break;
+                case (5):
+                    {
+                        t.TypeFast(d.DepositAmount(0, d.SilverDeposit(), 0, 0, 0, customerName));
+                    }
+                    break;
+                case (6):
+                    {
+                        t.TypeFast(d.DepositAmount(d.CopperDeposit(), 0, 0, 0, 0, customerName));
+                    }
+                    break;
+                default:
+                    {
+                        t.TypeFast("please select one of the options avalible by typing the number.");
+                    }
+                    break;
+
             }
         }
         public void Withdraw(string customerName)
         {
             int option;
+            
 
             CSV.GetBalance(customerName);
 
@@ -75,7 +92,16 @@ namespace CurrencyCalculator
             t.TypeFast("4) Electrum Withdrawal");
             t.TypeFast("5) Silver Withdrawal");
             t.TypeFast("6) Copper Withdrawal");
-            //option = Convert.
+            string Option = Console.ReadLine();
+
+            if (Option == "")
+            {
+                option = 0;
+            }
+            else
+            {
+                option = Convert.ToInt16(Option);
+            }
 
             switch (option)
             {
@@ -107,6 +133,12 @@ namespace CurrencyCalculator
                 case (6):
                     {
                         t.TypeFast(w.WithdrawAmount(w.CopperWithdraw(), 0, 0, 0, 0, customerName));
+                    }
+                    break;
+                default:
+                    {
+                        t.TypeFast("please select one of the options avalible by typing the number.");
+
                     }
                     break;
             }

@@ -1,31 +1,36 @@
-﻿<Properties StartupConfiguration="{E8F72B6D-C024-4BDC-A5A8-62A7BAC715F6}|Default" GitUserInfo="UsingMD">
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{E8F72B6D-C024-4BDC-A5A8-62A7BAC715F6}|Default">
+  <MonoDevelop.Ide.ItemProperties.CurrencyCalculator PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CurrencyCalculator/SmallTalk.cs">
     <Files>
-      <File FileName="CurrencyCalculator/Program.cs" Line="91" Column="22" />
-      <File FileName="CurrencyCalculator/Coin.cs" Line="7" Column="16" />
-      <File FileName="CurrencyCalculator/TypeOut.cs" Line="66" Column="1" />
-      <File FileName="CurrencyCalculator/SmallTalk.cs" Line="21" Column="2" />
-      <File FileName="CurrencyCalculator/ConsoleSpiner.cs" Line="21" Column="41" />
-      <File FileName="CurrencyCalculator/Deposits.cs" Line="24" Column="45" />
+      <File FileName="CurrencyCalculator/Program.cs" Line="17" Column="1" />
+      <File FileName="CurrencyCalculator/Coin.cs" Line="8" Column="31" />
+      <File FileName="CurrencyCalculator/TypeOut.cs" />
+      <File FileName="CurrencyCalculator/SmallTalk.cs" Line="61" Column="1" />
+      <File FileName="CurrencyCalculator/ConsoleSpiner.cs" />
+      <File FileName="CurrencyCalculator/Deposits.cs" Line="14" Column="1" />
       <File FileName="CurrencyCalculator/SaveToCSV.cs" Line="58" Column="19" />
-      <File FileName="CurrencyCalculator/Withdraw.cs" Line="60" Column="81" />
-      <File FileName="CurrencyCalculator/Actions.cs" Line="60" Column="9" />
+      <File FileName="CurrencyCalculator/Withdraw.cs" Line="10" Column="9" />
+      <File FileName="CurrencyCalculator/Actions.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CurrencyCalculator" expanded="True">
-            <Node name="CurrencyCalculator" expanded="True" />
+            <Node name="CurrencyCalculator" expanded="True">
+              <Node name="SmallTalk.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.CurrencyCalculator PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
