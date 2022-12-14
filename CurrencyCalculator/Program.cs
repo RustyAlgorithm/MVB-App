@@ -6,6 +6,7 @@ using System.Data;
 
 internal class Program
 {
+
     private static void Main(string[] args)
     {
         string customerName = "Smith";
@@ -13,14 +14,15 @@ internal class Program
         Random rng = new Random();
         TypeOut t = new TypeOut();
         SmallTalk s = new SmallTalk();
-        Deposits d = new Deposits();
+      
         SaveToCSV CSV = new SaveToCSV();
         Actions a = new Actions();
-
         
+
+
         bool finished = false;
         
-        float CurrentBalance = 0;
+        
 
         // Clear console of defualt text and then verify ready to start then clear again
         Console.Clear();
@@ -39,17 +41,17 @@ internal class Program
         Thread.Sleep(1500);
 
         // future functionality name for accounts
-        t.TypeFast("may I please have a name for the account.");
+        t.TypeFast("May we please have a name for the account.");
         customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        CurrentBalance = CSV.GetBalance(customerName);
+        
 
         // main section.
         while (finished == false)
         {
 
-            int option = 0;
+            
             string Option;
             t.TypeFast("1) Deposit");
             t.TypeFast("2) Withdraw");
@@ -59,14 +61,21 @@ internal class Program
 
             Option = Console.ReadLine();
 
-            if (Option != null)
-            {
-                option = Convert.ToInt16(Option);
-            }
-            else
+            int option = 0;
+
+            if (Option == "")
             {
                 option = 0;
             }
+            else
+            {
+                int parsedOption;
+                if (Int32.TryParse(Option, out parsedOption))
+                {
+                    option = parsedOption;
+                }
+            }
+
 
             string continueActions = "no";
 
@@ -79,7 +88,7 @@ internal class Program
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }
@@ -89,11 +98,12 @@ internal class Program
                     break;
                 case (2):
                     {
+                        a.Withdraw(customerName);
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }
@@ -103,12 +113,12 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(CurrentBalance)} gold.");
+                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(customerName))} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
-                        if (continueActions == null)
+                        if (continueActions == "")
                         {
                             continueActions = "no";
                         }
@@ -135,8 +145,8 @@ internal class Program
             if (continueActions == "no")
             {
                 finished = true;
-                CurrentBalance = CurrentBalance + d.CurrentDeposit();
-                CSV.SaveToCsv(customerName, CurrentBalance);
+                
+                
                 t.TypeLine("Very well, Thank you for using Multiversal Bank.");
                 t.TypeLine($"Have a nice day {customerName}.");
             }

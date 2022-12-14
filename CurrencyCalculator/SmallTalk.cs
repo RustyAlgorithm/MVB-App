@@ -58,10 +58,11 @@ namespace CurrencyCalculator
            
         }
 
-        Random r = new Random();
+        
 
         public string Thank(int Num)
         {
+            Random r = new Random();
             if (Num == 0)
             {
                 return "Very well.";
