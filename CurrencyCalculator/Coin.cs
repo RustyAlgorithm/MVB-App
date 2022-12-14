@@ -2,7 +2,7 @@
 
 namespace CurrencyCalculator
 {
-	class Coin
+	public class Coin
 	{
         public float Total;
         float runningTotal = 0;

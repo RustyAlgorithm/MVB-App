@@ -14,11 +14,10 @@ internal class Program
         Random rng = new Random();
         TypeOut t = new TypeOut();
         SmallTalk s = new SmallTalk();
-        Deposits d = new Deposits();
+      
         SaveToCSV CSV = new SaveToCSV();
         Actions a = new Actions();
-        Withdraw w = new Withdraw();
-        Coin c = new Coin();
+        
 
 
         bool finished = false;
@@ -46,13 +45,13 @@ internal class Program
         customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        a.CurrentBalance = CSV.GetBalance(customerName);
+        
 
         // main section.
         while (finished == false)
         {
 
-            int option = 0;
+            
             string Option;
             t.TypeFast("1) Deposit");
             t.TypeFast("2) Withdraw");
@@ -62,14 +61,21 @@ internal class Program
 
             Option = Console.ReadLine();
 
+            int option = 0;
+
             if (Option == "")
             {
                 option = 0;
             }
             else
             {
-                option = Convert.ToInt16(Option);
+                int parsedOption;
+                if (Int32.TryParse(Option, out parsedOption))
+                {
+                    option = parsedOption;
+                }
             }
+
 
             string continueActions = "no";
 
@@ -107,7 +113,7 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(a.CurrentBalance)} gold.");
+                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(customerName))} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -140,7 +146,7 @@ internal class Program
             {
                 finished = true;
                 
-                CSV.SaveToCsv(customerName, a.CurrentBalance);
+                
                 t.TypeLine("Very well, Thank you for using Multiversal Bank.");
                 t.TypeLine($"Have a nice day {customerName}.");
             }
