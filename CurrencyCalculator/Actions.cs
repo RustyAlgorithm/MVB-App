@@ -6,15 +6,10 @@ namespace CurrencyCalculator
 	public class Actions
 	{
         
-            TypeOut t = new TypeOut();
-            SmallTalk s = new SmallTalk();
-            Coin c = new Coin();
-            SaveToCSV CSV = new SaveToCSV();
-        
-
-
-
-        
+        TypeOut t = new TypeOut();
+        SmallTalk s = new SmallTalk();
+        Coin c = new Coin();
+        SaveToCSV CSV = new SaveToCSV(); 
 
         float hold;
         int thank;
@@ -195,7 +190,7 @@ namespace CurrencyCalculator
 
             CSV.GetBalance(AccountNameD);
 
-            t.TypeFast("dhat kind of Deposit dould you like?");
+            t.TypeFast("How would you like to make a deposit today??");
             t.TypeFast("1) Full Deposit");
             t.TypeFast("2) Platinum Deposit");
             t.TypeFast("3) Gold Deposit");
@@ -266,7 +261,7 @@ namespace CurrencyCalculator
 
             CSV.GetBalance(AccountNameW);
 
-            t.TypeFast("What kind of Withdrawal would you like?");
+            t.TypeFast("What kind of withdrawal would you like to make today?");
             t.TypeFast("1) Full Withdrawal (all in gold coins.)");
             t.TypeFast("2) Platinum Withdrawal");
             t.TypeFast("3) Gold Withdrawal");

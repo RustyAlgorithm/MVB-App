@@ -9,7 +9,7 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        string customerName = "Smith";
+        string customerName = "";
 
         Random rng = new Random();
         TypeOut t = new TypeOut();
@@ -31,18 +31,39 @@ internal class Program
 
         // Opener
         Thread.Sleep(1000);
-        t.TypeLine($"{s.Greeting(rng.Next(0, 7))} Adventurer!");
+        t.TypeFast($"{s.Greeting(rng.Next(0, 7))} Adventurer!");
         Thread.Sleep(1500);
-        t.TypeLine("Welcome to the Multiverse Bank!");
+        t.TypeFast("Welcome to the Multiversal Bank Automated Transaction Portal!");
         Thread.Sleep(1500);
         t.TypeFast("Please ensure all your coins are seperated into Copper, Silver, Electrum, Gold and Platinum pieces.");
         Thread.Sleep(1500);
-        t.TypeLine("Thank you.");
+        t.TypeFast("Thank you.");
         Thread.Sleep(1500);
 
         // future functionality name for accounts
         t.TypeFast("May we please have a name for the account.");
         customerName = Console.ReadLine();
+        if (customerName == "ClearAll")
+        {
+            t.TypeFast("This action will delete all data please confirm this is what you want to do.");
+            string ConfirmDelete = Console.ReadLine();
+            if (ConfirmDelete == "")
+            {
+                CSV.ClearCSV("user-data.csv");
+                t.TypeFast("ALL DATA CLEARED");
+                t.TypeFast("Press any key to exit the app...");
+                Console.ReadKey();
+                return;
+            }
+            else
+            {
+                t.TypeFast("Very well no data has been deleted.");
+                t.TypeFast("The console will now close.");
+                Console.ReadLine();
+                return;
+            }
+            
+        }
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
         
@@ -84,7 +105,7 @@ internal class Program
                 case (1):
                     {
                         a.Deposit(customerName);
-                        t.TypeLine("Have you 'found' anymore you want to include?");
+                        t.TypeFast("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
@@ -99,7 +120,7 @@ internal class Program
                 case (2):
                     {
                         a.Withdraw(customerName);
-                        t.TypeLine("Have you 'found' anymore you want to include?");
+                        t.TypeFast("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
@@ -113,8 +134,10 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(customerName))} gold.");
-                        t.TypeLine("Have you 'found' anymore you want to include?");
+                        t.TypeFast("Please wait while we count your gold.");
+                        t.WaitLine(CSV.GetBalance(customerName));
+                        t.TypeFast($"You currently have: {Convert.ToString(CSV.GetBalance(customerName))} gold.");
+                        t.TypeFast("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
@@ -147,8 +170,10 @@ internal class Program
                 finished = true;
                 
                 
-                t.TypeLine("Very well, Thank you for using Multiversal Bank.");
-                t.TypeLine($"Have a nice day {customerName}.");
+                t.TypeFast("Very well, Thank you for using Multiversal Bank Automated Transaction Portal.");
+                t.TypeFast($"Have a nice day {customerName}.");
+                Console.ReadLine();
+                return;
             }
         }
     }

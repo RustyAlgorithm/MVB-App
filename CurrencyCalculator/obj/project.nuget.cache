@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L/71VdM67kiMAlPMWTb5CnIRUt/HEJc6Cf8bav3bTbwAdWMU3RTdVNvZBnsyfdnSYLvjuS0SX1RhGLtbYB2rKA==",
+  "dgSpecHash": "bHwKUfZcRVmeTjhG9v3RCAPVZBJbFdAbqqaRQrNwNpZ+mslWo+r5+n0y1WiJrPjb1gI7WFVjrtdkiIMC80WeMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alast\\source\\repos\\RustyAlgorithm\\MVB-App\\CurrencyCalculator\\CurrencyCalculator.csproj",
+  "projectFilePath": "/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/CurrencyCalculator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

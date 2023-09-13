@@ -8,32 +8,28 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alast\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/alastairrussell/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alast\\Source\\Repos\\RustyAlgorithm\\MVB-App\\CurrencyCalculator\\CurrencyCalculator.csproj",
+      "projectUniqueName": "/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/CurrencyCalculator.csproj",
       "projectName": "CurrencyCalculator",
-      "projectPath": "C:\\Users\\alast\\Source\\Repos\\RustyAlgorithm\\MVB-App\\CurrencyCalculator\\CurrencyCalculator.csproj",
-      "packagesPath": "C:\\Users\\alast\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alast\\Source\\Repos\\RustyAlgorithm\\MVB-App\\CurrencyCalculator\\obj\\",
+      "projectPath": "/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/CurrencyCalculator.csproj",
+      "packagesPath": "/Users/alastairrussell/.nuget/packages/",
+      "outputPath": "/Users/alastairrussell/Projects/CurrencyCalculator/CurrencyCalculator/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alast\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/alastairrussell/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -67,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }
