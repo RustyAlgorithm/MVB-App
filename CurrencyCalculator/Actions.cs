@@ -261,7 +261,7 @@ namespace CurrencyCalculator
 
             }
         }
-        public void Withdraw(string AN)
+        public void Withdraw(int AN)
         {
 
             CSV.GetBalance(AN);

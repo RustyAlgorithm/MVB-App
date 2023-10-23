@@ -76,6 +76,37 @@ namespace CurrencyCalculator
             // If no match is found, return false
             return false;
         }
+        // generate a class to return the account number from the csv file
+        public int GetAN(int AN)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
+
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
+                {
+                    // If a match is found, try to parse the second field (column) as an int
+                    // and return the value
+                    if (int.TryParse(fields[1], out int result))
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        // If the value cannot be parsed as an int, return 0
+                        return 0;
+                    }
+                }
+            }
+
+            // If no match is found, return 0
+            return 0;
+        }
         public bool CheckPIN(int AN, int PIN)
         {
             // Read the CSV file

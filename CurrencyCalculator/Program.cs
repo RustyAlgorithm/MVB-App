@@ -3,6 +3,7 @@ using CurrencyCalculator;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 internal class Program
 {
@@ -10,6 +11,7 @@ internal class Program
     private static void Main(string[] args)
     {
         string customerName = "Smith";
+        int ANVerify = 0;
 
         Random rng = new Random();
         TypeOut t = new TypeOut();
@@ -89,8 +91,8 @@ internal class Program
             t.TypeLine("We are happy to have you with us.");
             t.TypeLine("Please follow the instructions on screen to access your account.");
             t.TypeLine("Thank you.");
-            t.TypeLine("Please enter your AccountNumber.");
-            int ANVerify = Convert.ToInt16(Console.ReadLine());
+            t.TypeLine("Please enter your Account Number.");
+            ANVerify = Convert.ToInt16(Console.ReadLine());
             if (CSV.CheckAccountNumber(ANVerify) == false)
             {
                 while (CSV.CheckAccountNumber(ANVerify) == false)
@@ -99,9 +101,12 @@ internal class Program
                     t.TypeLine("Please try again.");
                     ANVerify = Convert.ToInt16(Console.ReadLine());
                     
+                    
                 }
             }
             t.TypeLine($"Thank you, {customerName}.");
+            //assign AN to Gloabal variable
+            int AN = ANVerify;
             t.TypeLine("How can we help you today?");
             //ask for PIN
             t.TypeLine("Please enter your PIN.");
@@ -138,8 +143,10 @@ internal class Program
                     }
                 }
             }
-            
+        
         }
+        
+        
 
         /*// future functionality name for accounts
         t.TypeFast("May we please have a name for the account.");
@@ -184,7 +191,7 @@ internal class Program
             {
                 case (1):
                     {
-                        a.Deposit(customerName);
+                        a.Deposit(ANVerify);
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -199,7 +206,7 @@ internal class Program
                     break;
                 case (2):
                     {
-                        a.Withdraw(customerName);
+                        a.Withdraw(ANVerify);
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
@@ -214,7 +221,7 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(AN))} gold.");
+                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(ANVerify))} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 
