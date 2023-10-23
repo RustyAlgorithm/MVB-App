@@ -31,7 +31,10 @@ namespace CurrencyCalculator
                 }
             }
             //create a string to write to the file
-            string csv = $"{Name},{AN},{PIN}";                
+            string csv = $"{Name},{AN},{PIN}, 0"; 
+            
+            //write to the file
+            File.AppendAllText("user-data.csv", csv);
         }
         //class to return name from csv from AN
         public string CustomerName(int AN)
@@ -130,7 +133,8 @@ namespace CurrencyCalculator
             // If no match is found, return false
             return false;
         }
-        public float UpdateBalance(int AN, float balance)
+        //Find and amend the balance of a user using AN as input to verify user
+        public void UpdateBalance(int AN, float balance)
         {
             // Read the CSV file
             string[] lines = File.ReadAllLines("user-data.csv");
@@ -143,22 +147,29 @@ namespace CurrencyCalculator
                 // Check if the first field (column) matches the input string
                 if (fields[1] == AN.ToString())
                 {
+                    string CN = fields[0];
+                    int PIN = Convert.ToInt32(fields[2]);
+
                     // If a match is found, try to parse the second field (column) as a float
                     // and return the value
                     if (float.TryParse(fields[1], out float result))
                     {
-                        return result;
+                        result = balance;
+                        //create a string to write to the file
+                        string csvBal = $"{CN},{AN},{PIN},{result}";
+                        //clear Specific line from csv file
+                        File.WriteAllLines("user-data.csv", File.ReadAllLines("user-data.csv").Where(l => l != line).ToArray());
+                        //use the result variable to update the csv file in a specific position in the array
+                        File.AppendAllText("user-data.csv", csvBal);
+                        
                     }
                     else
                     {
                         // If the value cannot be parsed as a float, return 0
-                        return 0;
+                        return;
                     }
                 }
             }
-
-            // If no match is found, return 0
-            return 0;
         }
         //class to return balance of a user using AN as input to verify user
         public float GetBalance(int AN)
@@ -176,7 +187,7 @@ namespace CurrencyCalculator
                 {
                     // If a match is found, try to parse the second field (column) as a float
                     // and return the value
-                    if (float.TryParse(fields[1], out float result))
+                    if (float.TryParse(fields[3], out float result))
                     {
                         return result;
                     }

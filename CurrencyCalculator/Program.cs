@@ -50,6 +50,7 @@ internal class Program
         {
             newCustomer = "no";
         }
+        newCustomer = newCustomer.ToLower();
         bool NewCustomer;
 
         if (newCustomer == "yes")
@@ -61,7 +62,7 @@ internal class Program
             NewCustomer = false;
         }
 
-        newCustomer.ToLower();
+       
         if (NewCustomer == true)
         {
             t.TypeLine("Welcome to the Multiverse Bank!");
@@ -92,25 +93,24 @@ internal class Program
             t.TypeLine("Please follow the instructions on screen to access your account.");
             t.TypeLine("Thank you.");
             t.TypeLine("Please enter your Account Number.");
-            ANVerify = Convert.ToInt16(Console.ReadLine());
+            ANVerify = Convert.ToInt32(Console.ReadLine());
             if (CSV.CheckAccountNumber(ANVerify) == false)
             {
                 while (CSV.CheckAccountNumber(ANVerify) == false)
                 {
                     t.TypeLine("Account Number not found.");
                     t.TypeLine("Please try again.");
-                    ANVerify = Convert.ToInt16(Console.ReadLine());
+                    ANVerify = Convert.ToInt32(Console.ReadLine());
                     
                     
                 }
             }
+            customerName = CSV.CustomerName(ANVerify);
             t.TypeLine($"Thank you, {customerName}.");
             //assign AN to Gloabal variable
             int AN = ANVerify;
             t.TypeLine("How can we help you today?");
             //ask for PIN
-            t.TypeLine("Please enter your PIN.");
-            int PINCheck = Convert.ToInt16(Console.ReadLine());
             const int maxTries = 3;
             int tries = 0;
 
