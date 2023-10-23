@@ -1,4 +1,7 @@
-﻿using System;
+﻿// i need to add a way to save the AccountNumber and PIN to a CSV file
+// i need to add a way to check the CSV file for the AccountNumber and PIN
+
+using System;
 using System.IO;
 using System.Linq;
 
@@ -7,54 +10,125 @@ namespace CurrencyCalculator
     class SaveToCSV
     {
         TypeOut t = new TypeOut();
-
-        public void SaveToCsv(string name, float value)
+        public void SaveToCsv(string Name, int AN, int PIN)
         {
-            // Check if the file exists
-            if (File.Exists("user-data.csv"))
+            //check file exists
+            if (!File.Exists("user-data.csv"))
             {
-                // Read the contents of the file into a string array
-                string[] lines = File.ReadAllLines("user-data.csv");
-
-                // Check if the user's name exists in the file
-                if (lines.Any(line => line.StartsWith(name)))
+                //if not create it
+                File.Create("user-data.csv");
+            }
+            //check if AN already exists
+            string[] lines = File.ReadAllLines("user-data.csv");
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+                if (fields[1] == AN.ToString())
                 {
-                    // If the user's name exists, update the value associated with the name
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        if (lines[i].StartsWith(name))
-                        {
-                            // Split the line into name and value
-                            string[] parts = lines[i].Split(",");
-
-                            // Update the value
-                            lines[i] = parts[0] + "," + value;
-                            break;
-                        }
-                    }
-
-                    // Write the updated lines back to the file
-                    File.WriteAllLines("user-data.csv", lines);
-                }
-                else
-                {
-                    // If the user's name does not exist, append the name and value to the file
-                    using (StreamWriter file = File.AppendText("user-data.csv"))
-                    {
-                        file.WriteLine(name + "," + value);
-                    }
+                    t.TypeLine("Account Number already exists.");
+                    t.TypeLine("Please try again.");
+                    return;
                 }
             }
-            else
-            {
-                // If the file does not exist, create a new file and write the name and value to it
-                using (StreamWriter file = new StreamWriter("user-data.csv"))
-                {
-                    file.WriteLine(name + "," + value);
-                }
-            }
+            //create a string to write to the file
+            string csv = $"{Name},{AN},{PIN}";                
         }
+        //class to return name from csv from AN
+        public string CustomerName(int AN)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
 
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
+                {
+                    // If a match is found, return the second field (column)
+                    return fields[0];
+                }
+            }
+
+            // If no match is found, return an empty string
+            return "";
+        }
+        
+        public bool CheckAccountNumber(int AN)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
+
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
+                {
+                    return true;
+                }
+            }
+
+            // If no match is found, return false
+            return false;
+        }
+        public bool CheckPIN(int AN, int PIN)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
+
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
+                {
+                    if (fields[2] == PIN.ToString())
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            // If no match is found, return false
+            return false;
+        }
+        public float UpdateBalance(int AN, float balance)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
+
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
+            {
+                string[] fields = line.Split(',');
+
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
+                {
+                    // If a match is found, try to parse the second field (column) as a float
+                    // and return the value
+                    if (float.TryParse(fields[1], out float result))
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        // If the value cannot be parsed as a float, return 0
+                        return 0;
+                    }
+                }
+            }
+
+            // If no match is found, return 0
+            return 0;
+        }
             public float GetBalance(string input)
             {
                 // Read the CSV file

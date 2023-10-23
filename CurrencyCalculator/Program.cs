@@ -40,12 +40,113 @@ internal class Program
         t.TypeLine("Thank you.");
         Thread.Sleep(1500);
 
-        // future functionality name for accounts
+        // ask if new user or returning
+        t.TypeLine("Are you a new customer?");
+        t.TypeFast("Please enter Yes or No.");
+        string newCustomer = Console.ReadLine();
+        if (newCustomer == "")
+        {
+            newCustomer = "no";
+        }
+        bool NewCustomer;
+
+        if (newCustomer == "yes")
+        {
+            NewCustomer = true;
+        }
+        else
+        {
+            NewCustomer = false;
+        }
+
+        newCustomer.ToLower();
+        if (NewCustomer == true)
+        {
+            t.TypeLine("Welcome to the Multiverse Bank!");
+            t.TypeLine("We are happy to have you with us.");
+            t.TypeLine("Please follow the instructions on screen to create your account.");
+            t.TypeLine("Thank you.");
+            t.TypeLine("Please enter your name.");
+            customerName = Console.ReadLine();
+            if (customerName == "")
+            {
+                customerName = "Smith";
+            }
+            
+            
+            // generate random 4 digit number for PIN
+            int PIN = rng.Next(1000, 9999);
+            int AccountNumber = rng.Next(1000000, 9999999);
+            t.TypeLine($"Thank you, {customerName}.");
+            t.TypeLine($"Your account number is {AccountNumber}.");
+            t.TypeLine($"Your PIN is {PIN}.");
+            CSV.SaveToCsv(customerName, AccountNumber, PIN);
+            t.TypeLine("How can we help you today?");
+        }
+        else
+        {
+            t.TypeLine("Welcome back to the Multiverse Bank!");
+            t.TypeLine("We are happy to have you with us.");
+            t.TypeLine("Please follow the instructions on screen to access your account.");
+            t.TypeLine("Thank you.");
+            t.TypeLine("Please enter your AccountNumber.");
+            int ANVerify = Convert.ToInt16(Console.ReadLine());
+            if (CSV.CheckAccountNumber(ANVerify) == false)
+            {
+                while (CSV.CheckAccountNumber(ANVerify) == false)
+                {
+                    t.TypeLine("Account Number not found.");
+                    t.TypeLine("Please try again.");
+                    ANVerify = Convert.ToInt16(Console.ReadLine());
+                    
+                }
+            }
+            t.TypeLine($"Thank you, {customerName}.");
+            t.TypeLine("How can we help you today?");
+            //ask for PIN
+            t.TypeLine("Please enter your PIN.");
+            int PINCheck = Convert.ToInt16(Console.ReadLine());
+            const int maxTries = 3;
+            int tries = 0;
+
+            while (tries < maxTries)
+            {
+                t.TypeLine("Please enter your PIN:");
+                PINCheck = Convert.ToInt16(Console.ReadLine());
+
+                if (CSV.CheckPIN(ANVerify, PINCheck))
+                {
+                    // PIN is correct, break out of the loop
+                    t.TypeLine("PIN is correct.");
+                    break;
+                }
+                else
+                {
+                    // PIN is incorrect, increment the number of tries
+                    tries++;
+
+                    if (tries < maxTries)
+                    {
+                        // Prompt the user to try again
+                        t.TypeLine("Incorrect PIN. Please try again.");
+                    }
+                    else
+                    {
+                        // Max tries reached, exit the program
+                        t.TypeLine("Incorrect PIN. Max tries reached. Exiting program.");
+                        Environment.Exit(0);
+                    }
+                }
+            }
+            
+        }
+
+        /*// future functionality name for accounts
         t.TypeFast("May we please have a name for the account.");
         customerName = Console.ReadLine();
         t.TypeLine($"Thank you, {customerName}.");
         t.TypeLine("How can we help you today?");
-        
+        */
 
         // main section.
         while (finished == false)

@@ -28,3 +28,17 @@ C:\Users\alast\Source\Repos\RustyAlgorithm\MVB-App\CurrencyCalculator\obj\Debug\
 C:\Users\alast\Source\Repos\RustyAlgorithm\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.pdb
 C:\Users\alast\Source\Repos\RustyAlgorithm\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.genruntimeconfig.cache
 C:\Users\alast\Source\Repos\RustyAlgorithm\MVB-App\CurrencyCalculator\obj\Debug\net6.0\ref\CurrencyCalculator.dll
+D:\MVB-App\CurrencyCalculator\bin\Debug\net6.0\CurrencyCalculator.exe
+D:\MVB-App\CurrencyCalculator\bin\Debug\net6.0\CurrencyCalculator.deps.json
+D:\MVB-App\CurrencyCalculator\bin\Debug\net6.0\CurrencyCalculator.runtimeconfig.json
+D:\MVB-App\CurrencyCalculator\bin\Debug\net6.0\CurrencyCalculator.dll
+D:\MVB-App\CurrencyCalculator\bin\Debug\net6.0\CurrencyCalculator.pdb
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.AssemblyInfoInputs.cache
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.AssemblyInfo.cs
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.csproj.CoreCompileInputs.cache
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.dll
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\refint\CurrencyCalculator.dll
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.pdb
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\CurrencyCalculator.genruntimeconfig.cache
+D:\MVB-App\CurrencyCalculator\obj\Debug\net6.0\ref\CurrencyCalculator.dll
