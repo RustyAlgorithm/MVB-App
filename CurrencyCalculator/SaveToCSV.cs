@@ -129,37 +129,37 @@ namespace CurrencyCalculator
             // If no match is found, return 0
             return 0;
         }
-            public float GetBalance(string input)
+        //class to return balance of a user using AN as input to verify user
+        public float GetBalance(int AN)
+        {
+            // Read the CSV file
+            string[] lines = File.ReadAllLines("user-data.csv");
+
+            // Loop through the lines and split each line into an array of strings (fields)
+            foreach (string line in lines)
             {
-                // Read the CSV file
-                string[] lines = File.ReadAllLines("user-data.csv");
+                string[] fields = line.Split(',');
 
-                // Loop through the lines and split each line into an array of strings (fields)
-                foreach (string line in lines)
+                // Check if the first field (column) matches the input string
+                if (fields[1] == AN.ToString())
                 {
-                    string[] fields = line.Split(',');
-
-                    // Check if the first field (column) matches the input string
-                    if (fields[0] == input)
+                    // If a match is found, try to parse the second field (column) as a float
+                    // and return the value
+                    if (float.TryParse(fields[1], out float result))
                     {
-                        // If a match is found, try to parse the second field (column) as a float
-                        // and return the value
-                        if (float.TryParse(fields[1], out float result))
-                        {
-                            return result;
-                        }
-                        else
-                        {
-                            // If the value cannot be parsed as a float, return 0
-                            return 0;
-                        }
+                        return result;
+                    }
+                    else
+                    {
+                        // If the value cannot be parsed as a float, return 0
+                        return 0;
                     }
                 }
-
-                // If no match is found, return 0
-                return 0;
             }
-        
+
+            // If no match is found, return 0
+            return 0;
+        }
     }
 
 }

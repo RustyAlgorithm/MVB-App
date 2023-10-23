@@ -214,7 +214,7 @@ internal class Program
                     break;
                 case (3):
                     {
-                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(customerName))} gold.");
+                        t.TypeLine($"You currently have: {Convert.ToString(CSV.GetBalance(AN))} gold.");
                         t.TypeLine("Have you 'found' anymore you want to include?");
                         t.TypeFast("please enter yes or no.");
 

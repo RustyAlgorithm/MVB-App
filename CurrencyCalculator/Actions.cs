@@ -89,15 +89,15 @@ namespace CurrencyCalculator
             return PD;
         }
 
-        public string DepositAmount(float cP, float sP, float eP, float gP, float pP, string name)
+        public string DepositAmount(float cP, float sP, float eP, float gP, float pP, int AN)
         {
-            float CurrentBalance = CSV.GetBalance(name);
+            float CurrentBalance = CSV.GetBalance(AN);
             float newtotal = Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP)) + CurrentBalance;
             t.TypeLine("Please wait while we count your coins.");
             t.WaitLine(newtotal);
             Thread.Sleep(100);
 
-            CSV.SaveToCsv(name, newtotal);
+            CSV.UpdateBalance(AN, newtotal);
             return $"Your total is: {Convert.ToString(newtotal)} gold";
         }
         /*public float CurrentDeposit()
@@ -106,7 +106,7 @@ namespace CurrencyCalculator
         }*/
         public float CopperWithdraw()
         {
-            t.TypeFast("Please Enter the number of Copper Pieces (CP) you want to withdra..");
+            t.TypeFast("Please Enter the number of Copper Pieces (CP) you want to withdraw..");
 
             int cP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(cP * 0.01);
@@ -120,7 +120,7 @@ namespace CurrencyCalculator
         }
         public float SilverWithdraw()
         {
-            t.TypeFast("Please Enter the number of Silver Pieces (SP) you want to withdra..");
+            t.TypeFast("Please Enter the number of Silver Pieces (SP) you want to withdraw..");
 
             int sP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(sP * 0.1);
@@ -134,7 +134,7 @@ namespace CurrencyCalculator
         }
         public float ElectrumWithdraw()
         {
-            t.TypeFast("Please Enter the number of Electrum Pieces (EP) you want to withdra..");
+            t.TypeFast("Please Enter the number of Electrum Pieces (EP) you want to withdraw..");
 
             int eP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(eP * 0.5);
@@ -148,7 +148,7 @@ namespace CurrencyCalculator
         }
         public float GoldWithdraw()
         {
-            t.TypeFast("Please Enter the number of Gold Pieces (GP) you want to withdra..");
+            t.TypeFast("Please Enter the number of Gold Pieces (GP) you want to withdraw..");
 
             int gP = Convert.ToInt32(Console.ReadLine());
             thank = gP;
@@ -161,7 +161,7 @@ namespace CurrencyCalculator
         }
         public float PlatinumWithdraw()
         {
-            t.TypeFast("Please Enter the number of Platinum Pieces (PP) you want to withdra..");
+            t.TypeFast("Please Enter the number of Platinum Pieces (PP) you want to withdraw..");
 
             int pP = Convert.ToInt32(Console.ReadLine());
             hold = Convert.ToSingle(pP * 5);
@@ -173,29 +173,29 @@ namespace CurrencyCalculator
             Thread.Sleep(1500);
             return PD;
         }
-        public string WithdrawAmount(float cP, float sP, float eP, float gP, float pP, string name)
+        public string WithdrawAmount(float cP, float sP, float eP, float gP, float pP, int AN)
         {
-            float CurrentBalance = CSV.GetBalance(name);
+            float CurrentBalance = CSV.GetBalance(AN);
             float newtotal = CurrentBalance - Convert.ToSingle(c.CountCoins(cP, sP, eP, gP, pP));
             t.TypeLine("Please wait while we count your coins.");
             t.WaitLine(newtotal);
             Thread.Sleep(100);
 
-            CSV.SaveToCsv(name, newtotal);
+            CSV.UpdateBalance(AN, newtotal);
             return $"Your total is: {Convert.ToString(newtotal)} gold";
         }
-        public float BalanceTotal(string name)
+        public float BalanceTotal(int AN)
         {
-            return CSV.GetBalance(name);
+            return CSV.GetBalance(AN);
         }
 
-        public void Deposit(string AccountNameD)
+        public void Deposit(int AN)
         {
 
 
-            CSV.GetBalance(AccountNameD);
+            CSV.GetBalance(AN);
 
-            t.TypeFast("dhat kind of Deposit dould you like?");
+            t.TypeFast("What kind of Deposit dould you like?");
             t.TypeFast("1) Full Deposit");
             t.TypeFast("2) Platinum Deposit");
             t.TypeFast("3) Gold Deposit");
@@ -225,32 +225,32 @@ namespace CurrencyCalculator
             {
                 case (1):
                     {
-                        t.TypeFast(DepositAmount(CopperDeposit(), SilverDeposit(), ElectrumDeposit(), GoldDeposit(), PlatinumDeposit(), AccountNameD));
+                        t.TypeFast(DepositAmount(CopperDeposit(), SilverDeposit(), ElectrumDeposit(), GoldDeposit(), PlatinumDeposit(), AN));
                     }
                     break;
                 case (2):
                     {
-                        t.TypeFast(DepositAmount(0, 0, 0, 0, PlatinumDeposit(), AccountNameD));
+                        t.TypeFast(DepositAmount(0, 0, 0, 0, PlatinumDeposit(), AN));
                     }
                     break;
                 case (3):
                     {
-                        t.TypeFast(DepositAmount(0, 0, 0, GoldDeposit(), 0, AccountNameD));
+                        t.TypeFast(DepositAmount(0, 0, 0, GoldDeposit(), 0, AN));
                     }
                     break;
                 case (4):
                     {
-                        t.TypeFast(DepositAmount(0, 0, ElectrumDeposit(), 0, 0, AccountNameD));
+                        t.TypeFast(DepositAmount(0, 0, ElectrumDeposit(), 0, 0, AN));
                     }
                     break;
                 case (5):
                     {
-                        t.TypeFast(DepositAmount(0, SilverDeposit(), 0, 0, 0, AccountNameD));
+                        t.TypeFast(DepositAmount(0, SilverDeposit(), 0, 0, 0, AN));
                     }
                     break;
                 case (6):
                     {
-                        t.TypeFast(DepositAmount(CopperDeposit(), 0, 0, 0, 0, AccountNameD));
+                        t.TypeFast(DepositAmount(CopperDeposit(), 0, 0, 0, 0, AN));
                     }
                     break;
                 default:
@@ -261,10 +261,10 @@ namespace CurrencyCalculator
 
             }
         }
-        public void Withdraw(string AccountNameW)
+        public void Withdraw(string AN)
         {
 
-            CSV.GetBalance(AccountNameW);
+            CSV.GetBalance(AN);
 
             t.TypeFast("What kind of Withdrawal would you like?");
             t.TypeFast("1) Full Withdrawal (all in gold coins.)");
@@ -296,32 +296,32 @@ namespace CurrencyCalculator
             {
                 case (1):
                     {
-                        t.TypeFast(WithdrawAmount(CopperWithdraw(), SilverWithdraw(), ElectrumWithdraw(), GoldWithdraw(), PlatinumWithdraw(), AccountNameW));
+                        t.TypeFast(WithdrawAmount(CopperWithdraw(), SilverWithdraw(), ElectrumWithdraw(), GoldWithdraw(), PlatinumWithdraw(), AN));
                     }
                     break;
                 case (2):
                     {
-                        t.TypeFast(WithdrawAmount(0, 0, 0, 0, PlatinumWithdraw(), AccountNameW));
+                        t.TypeFast(WithdrawAmount(0, 0, 0, 0, PlatinumWithdraw(), AN));
                     }
                     break;
                 case (3):
                     {
-                        t.TypeFast(WithdrawAmount(0, 0, 0, GoldWithdraw(), 0, AccountNameW));
+                        t.TypeFast(WithdrawAmount(0, 0, 0, GoldWithdraw(), 0, AN));
                     }
                     break;
                 case (4):
                     {
-                        t.TypeFast(WithdrawAmount(0, 0, ElectrumWithdraw(), 0, 0, AccountNameW));
+                        t.TypeFast(WithdrawAmount(0, 0, ElectrumWithdraw(), 0, 0, AN));
                     }
                     break;
                 case (5):
                     {
-                        t.TypeFast(WithdrawAmount(0, SilverWithdraw(), 0, 0, 0, AccountNameW));
+                        t.TypeFast(WithdrawAmount(0, SilverWithdraw(), 0, 0, 0, AN));
                     }
                     break;
                 case (6):
                     {
-                        t.TypeFast(WithdrawAmount(CopperWithdraw(), 0, 0, 0, 0, AccountNameW));
+                        t.TypeFast(WithdrawAmount(CopperWithdraw(), 0, 0, 0, 0, AN));
                     }
                     break;
                 default:
