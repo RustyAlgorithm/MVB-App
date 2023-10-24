@@ -117,7 +117,7 @@ internal class Program
             while (tries < maxTries)
             {
                 t.TypeLine("Please enter your PIN:");
-                PINCheck = Convert.ToInt16(Console.ReadLine());
+                int PINCheck = Convert.ToInt16(Console.ReadLine());
 
                 if (CSV.CheckPIN(ANVerify, PINCheck))
                 {
@@ -196,6 +196,7 @@ internal class Program
                         t.TypeFast("please enter yes or no.");
 
                         continueActions = Console.ReadLine();
+
                         if (continueActions == "")
                         {
                             continueActions = "no";
