@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "MBA",
+            "database": "${workspaceFolder:MVB-App}/Customers.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
