@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using CurrencyCalculator;
 
 namespace CurrencyCalculator
@@ -110,6 +111,8 @@ namespace CurrencyCalculator
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
+       
+        
         
     }
 }

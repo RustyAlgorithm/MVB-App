@@ -1,0 +1,6 @@
+CREATE TABLE Customers (
+    CustomerName TEXT,
+    AccountNumber INTEGER,
+    PIN INTEGER,
+    Balance DECIMAL
+);

@@ -16,7 +16,7 @@ internal class Program
         Random rng = new Random();
         TypeOut t = new TypeOut();
         SmallTalk s = new SmallTalk();
-      
+        SaveToDB DB = new SaveToDB();
         SaveToCSV CSV = new SaveToCSV();
         Actions a = new Actions();
         
@@ -28,6 +28,7 @@ internal class Program
 
         // Clear console of defualt text and then verify ready to start then clear again
         Console.Clear();
+        DB.CheckDB();
         t.PauseLine("Are you Ready?");
         Console.Clear();
 
